@@ -1,18 +1,46 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
-const FormLogin = () => {
+
+const FormLogin = ({login}) => {
+
+    const {register, formState: { errors } , handleSubmit} = useForm();
+
+    const onSubmit = (dataUser, e) => {
+        console.log(dataUser);
+        login(dataUser)
+        e.target.reset();
+    }
+
     return (
-        <form>
-            <div className="mb-5">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-3">
+                <label htmlFor="inputEmail" className="form-label">Email address</label>
+                <input name='username' type="text" className="form-control" aria-describedby="emailHelp"
+                {...register('username', {
+                    required: {
+                        value: true, 
+                        message: 'El email es requerido'
+                        }, 
+                })} />
+                <span className="text-danger text-small d-block mb-2">{errors.username && errors.username.message}</span>
             </div>
             <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
+                <label htmlFor="inputPassword" className="form-label">Password</label>
+                <input type="password" className="form-control" id="inputPassword" 
+                {...register('password', {
+                    required: {
+                        value: true, 
+                        message: 'La contraseña es requerida'
+                        }, 
+                    minLength: {
+                        value: 6, 
+                        message: 'Mínimo 6 carácteres'
+                        }
+                })}/>
+                <span className="text-danger text-small d-block mb-2">{errors.password && errors.password.message}</span>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button name='password' type="submit" className="btn btn-primary">Submit</button>
         </form>
     )
 }
