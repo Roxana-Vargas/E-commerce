@@ -16,7 +16,7 @@ const FormLogin = ({login}) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
                 <label htmlFor="inputEmail" className="form-label">Email address</label>
-                <input name='username' type="text" className="form-control" aria-describedby="emailHelp"
+                <input name='username' type="text" autoComplete='username' className="form-control" aria-describedby="emailHelp"
                 {...register('username', {
                     required: {
                         value: true, 
@@ -27,7 +27,7 @@ const FormLogin = ({login}) => {
             </div>
             <div className="mb-3">
                 <label htmlFor="inputPassword" className="form-label">Password</label>
-                <input type="password" className="form-control" id="inputPassword" 
+                <input type="password" className="form-control" autoComplete='current-password' id="inputPassword" 
                 {...register('password', {
                     required: {
                         value: true, 
