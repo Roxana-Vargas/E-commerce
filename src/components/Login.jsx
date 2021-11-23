@@ -31,8 +31,8 @@ const Login = () => {
                     theme: 'colored'
                     });
             }
-            })
-        }   
+        })
+    }   
 
     return (
         <>

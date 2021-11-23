@@ -1,15 +1,32 @@
 import React from 'react'
 
-const Product = () => {
+const Product = ({allProducts}) => {
     return (
-    <div className="card" style={{width: '18rem'}}>
-        <img src={'https://media.istockphoto.com/photos/wall-clock-isolated-on-white-ten-past-ten-picture-id597276512?k=20&m=597276512&s=612x612&w=0&h=n2Wds5-xqleapCIVWnuLO9H-fQltLBllf1rRI2ZjKbI='} className="card-img-top" alt="..." />
-        <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#j" className="btn btn-primary">Go somewhere</a>
+        <div>
+            {
+                allProducts.map((item) => {
+                    return (
+                        <div key={item.id} className="card" style={{width: '18rem'}}>
+                            <img src={item.image} alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{item.title}</h5>
+                                <p>{item.price}</p>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Description
+                                    </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    {item.description}
+                                    </div>
+                                </div>
+                                <button className='btn btn-primary'>Buy</button>
+                            </div>
+                        </div>)
+                    })
+                }  
         </div>
-    </div>
     )
 }
 
