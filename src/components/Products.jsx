@@ -10,9 +10,12 @@ const Products = () => {
 
     const [allProducts, setAllProducts] = useState([]);
 
+    const [products, setProducts] = useState([]);
+
     const getAllProducts = () => {
         axios.get('https://fakestoreapi.com/products').then((response) => {
             setAllProducts(response.data);
+            setProducts(response.data);
             console.log(response.data);
         })
     }
@@ -21,6 +24,11 @@ const Products = () => {
         getAllProducts()
     }, [])
 
+    const filterProductsByCategory = (category) => {
+        const filteredProducts = allProducts.filter((product) => product.category === `${category}`);
+        setProducts(filteredProducts)
+      };
+
     return (
         <div>
             <Navigation />
@@ -28,7 +36,13 @@ const Products = () => {
                 <h3>Hello {username}</h3>
                 <p>Lets gets somethings?</p>
             </div>
-            <Product allProducts={allProducts} />
+            <div>
+                <button onClick={() => {filterProductsByCategory('electronics')}} className='btn btn-primary'>Electronics</button>
+                <button onClick={() => {filterProductsByCategory('jewelery')}} className='btn btn-primary'>Jewelery</button>
+                <button onClick={() => {filterProductsByCategory("men's clothing")}} className='btn btn-primary'>men's clothing</button>
+                <button onClick={() => {filterProductsByCategory("women's clothing")}} className='btn btn-primary'>women's clothing</button>
+            </div>
+            <Product allProducts={products} />
         </div>
     )
 }
