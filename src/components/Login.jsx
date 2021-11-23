@@ -15,6 +15,7 @@ const Login = () => {
         axios.post('https://fakestoreapi.com/auth/login', dataUser).then((response)=>{
             if (response.data.token) {
                 navigate('/productos', { replace: true })
+                localStorage.setItem('token', response.data.token)
             } else {
                 console.log(response.data.msg);
                 toast.error(`${response.data.msg}`, {
