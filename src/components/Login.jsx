@@ -1,6 +1,7 @@
 import React from 'react'
 import FormLogin from './FormLogin'
 import axios from 'axios'
+import jwt from "jwt-decode";
 import { useNavigate } from 'react-router'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +16,8 @@ const Login = () => {
         axios.post('https://fakestoreapi.com/auth/login', dataUser).then((response)=>{
             if (response.data.token) {
                 navigate('/productos', { replace: true })
-                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('username', dataUser.username)
             } else {
                 console.log(response.data.msg);
                 toast.error(`${response.data.msg}`, {
