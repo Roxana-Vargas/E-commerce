@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Product = ({allProducts}) => {
+const Product = ({allProducts, showCart, addProduct}) => {
+
+    
     return (
         <div>
             {
@@ -11,11 +13,11 @@ const Product = ({allProducts}) => {
                             <div className="card-body">
                                 <h5 className="card-title">{item.title}</h5>
                                 <p>{item.price}</p>
-                                <button className='btn btn-primary'>Buy</button>
+                                <button onClick={() => {addProduct(item.id); showCart()}} className='btn btn-primary'>Buy</button>
                             </div>
                         </div>)
-                    })
-                }  
+                })
+            }  
         </div>
     )
 }
