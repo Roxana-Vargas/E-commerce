@@ -56,7 +56,12 @@ const Products = () => {
         ])
     }
 
-    
+    const removeProduct = (id) => {
+        const newProductsToCart = productsCart.filter((product) => product.id !== id)
+        setProductsCart(newProductsToCart);
+        const newProductsToOrder = productToOrder.filter((product) => product.productId !== id);
+        setProductToOrder(newProductsToOrder)
+    }
 
     const buyProduct = () => {
         setProductsCart([]);
@@ -65,9 +70,9 @@ const Products = () => {
                     date: 2020-2-5,
                     products: productToOrder
                 }
-            )
-            .then(res=>console.log(res))
-            .then(setProductToOrder([]))
+        )
+        .then(res=>console.log(res))
+        .then(setProductToOrder([]))
     }
 
     return (
@@ -89,7 +94,7 @@ const Products = () => {
                     <Product addProduct={addProduct} allProducts={products} showCart={showCart} />
                 </div>}
             {viewCart&& 
-            <Cart productsCart={productsCart} showProducts={showProducts} buyProducts={buyProduct} />}
+            <Cart removeProduct={removeProduct} productsCart={productsCart} showProducts={showProducts} buyProducts={buyProduct} />}
         </div>
     )
 }

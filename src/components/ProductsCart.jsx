@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductsCart = ({productsCart}) => {
+const ProductsCart = ({productsCart, removeProduct}) => {
     return (
         <div>
             {
@@ -19,6 +19,7 @@ const ProductsCart = ({productsCart}) => {
                                     <div className='col'>
                                         <button>Menos</button><p>Cantidad</p><button>Más</button>
                                     </div>
+                                    <button onClick={() => removeProduct(item.id)}>Eliminar</button>
                                 </div>
                             </div>
                         </div>
