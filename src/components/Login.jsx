@@ -3,7 +3,10 @@ import FormLogin from './FormLogin'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import loginPng from '../assets/login.png'
+import logo from '../assets/logo-ec.PNG'
+import 'react-toastify/dist/ReactToastify.css';
+import './login.css'
 
 
 
@@ -18,7 +21,6 @@ const Login = () => {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('username', dataUser.username)
             } else {
-                console.log(response.data.msg);
                 toast.error(`${response.data.msg}`, {
                     position: "bottom-center",
                     autoClose: 5000,
@@ -29,14 +31,32 @@ const Login = () => {
                     progress: undefined,
                     theme: 'colored'
                     });
+                navigate('/login', { replace: true })
             }
         })
     }   
 
     return (
         <>
-            <FormLogin login={login} />
-            <ToastContainer />
+            <div className='m-5' >
+                <div className='row '>
+                    <div className='col containerLogin'>
+                        <div className='textLogin hide'>
+                            <h4 >Your best option </h4> 
+                            <h4>to buy online</h4>
+                        </div>
+                        <div className='containerImage'>
+                           <img className='loginImg'   src={loginPng} alt="login" /> 
+                        </div>
+                    </div>
+                    <div className='col containerForm'>
+                        <img className='hide logo' src={logo} alt="logo" />
+                        <FormLogin login={login} /> 
+                    </div>
+                </div>
+                <ToastContainer />
+            </div>
+            
         </>
     )
 }

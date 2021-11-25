@@ -1,0 +1,78 @@
+.logoWelcome {
+    width: 60px;
+}
+
+.girlWelcome {
+    width: 320px;
+    padding-bottom: 50px;
+}
+
+.girlWelcome {
+    animation: movimiento 2.5s linear infinite;
+}
+
+.bg-white{
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.textWelcome{
+    line-height: 30px;
+}
+
+.contentTextWelcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    text-align: center;
+    padding: 0px 0px 40px;
+}
+
+.contentTextInformation {
+    color: black;
+    text-align: center;
+    line-height: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.container-init{
+    display: flex;
+    justify-content: center;
+}
+
+.buttongGet {
+    padding: 5px;
+    color: white;
+    width: 150px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    letter-spacing: 0.9px;
+}
+.containerWelcome {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg-btn {
+    background: #F93D15;
+}
+
+@keyframes movimiento{
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(30px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

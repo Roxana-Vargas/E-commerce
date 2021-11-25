@@ -1,0 +1,69 @@
+.text{
+    color: gray;
+}
+
+.divAllProducts{
+    display: flex;
+    justify-content: space-between;
+}
+
+.textCategories{
+    margin-top: 14px;
+    font-weight: 600;
+}
+
+.btnSeeAll{
+    font-size: 13px;
+    color: #F93D15;
+    font-weight: 500;
+}
+
+.btnSeeAll:focus, .btn-category:focus  {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.btn-category{
+    background: #f5f2f1;
+    width: 60px;
+    height: 50px;
+}
+
+.btn-category:focus{
+    background-color:#F93D15;
+}
+
+.icon{
+    color: rgb(190, 185, 185);
+    font-size: 25px;
+}
+
+@media screen and (min-width: 700px){
+    .divAllProducts{
+        justify-content: space-evenly;
+    }
+    .btnsCategory{
+        justify-content: space-evenly;
+    }
+    
+}
+
+@media screen and (min-width: 1000px){
+    .textWelcome{
+    width: 20%;
+    margin-inline: auto;
+}
+}
+
+
+@media screen and (min-width: 1530px){
+    .textWelcome{
+        width: 13%;
+        margin-inline: auto;
+    }
+}
+
+

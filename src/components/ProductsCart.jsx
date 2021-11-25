@@ -1,29 +1,30 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import './cart.css'
 
 const ProductsCart = ({productsCart, removeProduct}) => {
     return (
-        <div>
+        <div className='containerCart'>
             {
                 productsCart.map((item) => (
-                    <div key={item.id} className='card'>
-                        <div style={{maxWidth:'540px'}} className='row'>
-                            <div style={{maxWidth:'80px'}} className='col'>
-                                <img style={{width:'80px'}}  src={item.image} alt="" />
-                            </div>
-                            <div className='col'>
-                                <p>Nombre</p>
-                                <div className='row'>
-                                    <div className='col'>
-                                        <p>Precio</p>
-                                    </div>
-                                    <div className='col'>
-                                        <button>Menos</button><p>Cantidad</p><button>Más</button>
-                                    </div>
-                                    <button onClick={() => removeProduct(item.id)}>Eliminar</button>
-                                </div>
+                    <div key={item.id} style={{width:'350px'}} className='m-3 d-flex flex-row card row'>
+                        <div className='col-3' style={{maxWidth:'540px'}} >
+                            <div className='containerImageCart' >
+                                <img className='imageCart' src={item.image} alt="" />
                             </div>
                         </div>
-                    </div>
+                        <div className='infoCart col-9'>
+                            <p className='nameCart'>{item.title}</p>
+                            <div >
+                                <div className='d-flex justify-content-between'>
+                                    <p className='priceCart'>${item.price}</p>
+                                    <button className='btn btnRemove' onClick={() => removeProduct(item.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>   
             ))}
         </div>
     )

@@ -1,0 +1,39 @@
+.containerProduct{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.imageProduct{
+    width: 100px;
+    height: 120px;
+}
+
+.card-title{
+    color: gray;
+}
+
+.textPrice{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.card{
+    background: #fcf9f9;
+    border-radius: 15px;
+    border: 1px solid #cec5c5;
+}
+
+.card-body{
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.btn-buy{
+    background: #F93D15;
+    width: 60%;
+    margin-inline: auto;
+    color: white;
+    margin-bottom: 20px;
+}

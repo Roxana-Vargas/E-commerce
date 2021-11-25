@@ -1,0 +1,70 @@
+.btn-back{
+    width: 5%;
+    margin-inline: 5%;
+    font-size: 20px;
+}
+
+.textMyCart{
+    margin-right: 38%;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.imageCart{
+    width: 70px;
+    margin-top: 15px;
+}
+
+.containerImageCart{
+    display: flex;
+    justify-content: center;
+}
+
+.infoCart{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.nameCart{
+    font-weight: 600;
+}
+
+.priceCart{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.btnRemove{
+    color: #F93D15;
+}
+
+.btnBuy{
+    background: #f75430;
+    width: 90%;
+    margin-left: 5%;
+    color: white;
+    border-radius: 10px;
+}
+
+.priceCart{
+    color: #f75430;
+}
+
+.containerCart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 550px){
+    .containerTotal{
+        display: flex !important ;
+        justify-content: space-evenly !important;
+    }
+
+    .btnBuy{
+        width: 40%;
+        margin-left: 30%;
+    }
+}

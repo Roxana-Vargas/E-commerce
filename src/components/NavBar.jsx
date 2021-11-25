@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './navBar.css'
 
 const Navigation = () => {
   return (
-  <nav style={{ background: "#3F3F3F" }} className="navbar navbar-expand-lg navbar-dark">
-    <div className='container-fluid'>
+  <nav className="navbar navbar-expand-lg">
+    <div className='container-fluid d-flex justify-content-end'>
         <button
             className="navbar-toggler"
             type="button"
@@ -14,7 +15,7 @@ const Navigation = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
         >
-            <span className="navbar-toggler-icon"></span>
+            <span>☰</span>
         </button>
         <div
             className="collapse navbar-collapse"
@@ -22,9 +23,8 @@ const Navigation = () => {
             style={{ justifyContent: "end" }}
         >
             <ul className="navbar-nav">
-                <li className='nav-item'><Link to="/productos">Productos</Link></li>
-                <li className='nav-item'><Link to="/compra">Compra</Link></li>
-                <li className='nav-item'><Link to="/">Log Out</Link></li>
+                <li className='nav-item'><Link className='linkNav linkProducts' to="/productos">Productos</Link></li>
+                <li className='nav-item'><Link className='linkNav' to="/">Log Out</Link></li>
             </ul>
         </div>
     </div>     

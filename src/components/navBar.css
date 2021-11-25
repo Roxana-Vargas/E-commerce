@@ -1,0 +1,32 @@
+.navbar{
+    background: white;
+}
+
+.navbar-toggler{
+    color:  #F93D15 !important;
+}
+
+.linkNav{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    color: #F93D15;
+    text-decoration: none;
+    display: block;
+    padding-inline: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    list-style: none;
+}
+
+.linkNav:hover{
+    border-bottom: white;
+}
+
+.linkProducts{
+    background: #F93D15;
+    border-radius: 10px;
+    color: white;
+}

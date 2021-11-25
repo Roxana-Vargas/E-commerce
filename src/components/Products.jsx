@@ -3,10 +3,16 @@ import Navigation from './NavBar'
 import Product from './Product'
 import axios from 'axios'
 import Cart from './Cart'
+import Carousel from './Carousel'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMemory, faGem, faFemale, faMale } from '@fortawesome/free-solid-svg-icons'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './products.css'
 
 
 const Products = () => {
-    
+        
     const username = localStorage.getItem('username');
 
     const [allProducts, setAllProducts] = useState([]);
@@ -61,6 +67,8 @@ const Products = () => {
         setProductsCart(newProductsToCart);
         const newProductsToOrder = productToOrder.filter((product) => product.productId !== id);
         setProductToOrder(newProductsToOrder)
+        const removedProduct = productsCart.filter((product) => product.id === id);
+        settotal(total - removedProduct[0].price)
     }
 
     const buyProduct = () => {
@@ -73,6 +81,25 @@ const Products = () => {
         )
         .then(res=>console.log(res))
         .then(setProductToOrder([]))
+        .then(settotal(0))
+        .then(setViewCart(false))
+        toast.success('🦄 Successful purchase!', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+            });
+    }
+
+    const [total, settotal] = useState(0)
+    
+    const addTotal = (price) => {
+        settotal(total + price);
+        console.log(total);
     }
 
     return (
@@ -80,21 +107,26 @@ const Products = () => {
             {!viewCart && 
                 <div>
                     <Navigation />
-                    <div>
-                        <h3>Hello {username}</h3>
-                        <p>Lets gets somethings?</p>
+                    <div className='textWelcome'>
+                        <h4 className='m-3'>Hello {username} 🙂</h4>
+                        <p className='text m-3'>Lets gets somethings?</p>
                     </div>
-                    <button onClick={() => setProducts(allProducts)}>See All</button>
-                    <div>
-                        <button onClick={() => {filterProductsByCategory('electronics')}} className='btn btn-primary'>Electronics</button>
-                        <button onClick={() => {filterProductsByCategory('jewelery')}} className='btn btn-primary'>Jewelery</button>
-                        <button onClick={() => {filterProductsByCategory("men's clothing")}} className='btn btn-primary'>men's clothing</button>
-                        <button onClick={() => {filterProductsByCategory("women's clothing")}} className='btn btn-primary'>women's clothing</button>
+                    <Carousel />
+                    <div className='divAllProducts m-3'>
+                        <p className='textCategories'>Top categories</p>
+                        <button  className='btn btnSeeAll' onClick={() => setProducts(allProducts)}>See All</button>
                     </div>
-                    <Product addProduct={addProduct} allProducts={products} showCart={showCart} />
+                    <div className='btnsCategory m-3 d-flex justify-content-around'>
+                        <button onClick={() => {filterProductsByCategory('electronics')}} className='btn btn-category'><FontAwesomeIcon className='icon' icon={faMemory} /></button>
+                        <button onClick={() => {filterProductsByCategory('jewelery')}} className='btn btn-category'><FontAwesomeIcon className='icon' icon={faGem} /></button>
+                        <button onClick={() => {filterProductsByCategory("men's clothing")}} className='btn btn-category'><FontAwesomeIcon className='icon' icon={faMale} /></button>
+                        <button onClick={() => {filterProductsByCategory("women's clothing")}} className='btn btn-category'><FontAwesomeIcon className='icon' icon={faFemale} /></button>
+                    </div>
+                    <Product  addTotal={addTotal} addProduct={addProduct} allProducts={products} showCart={showCart} />
                 </div>}
             {viewCart&& 
-            <Cart removeProduct={removeProduct} productsCart={productsCart} showProducts={showProducts} buyProducts={buyProduct} />}
+            <Cart total={total} removeProduct={removeProduct} productsCart={productsCart} showProducts={showProducts} buyProducts={buyProduct} />}
+            <ToastContainer />
         </div>
     )
 }
